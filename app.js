@@ -1,5 +1,6 @@
 const express = require('express');
 const dBModule = require('./dBModule');
+const accountModule = require('./accountModule');
 const app = express();
 const port = 3000;
 const ClientDir = __dirname + "\\client\\";
@@ -21,6 +22,11 @@ app.get('/login', (req, res) => {
 
 app.get('/register', (req, res) => {
     res.render('register');
+});
+
+app.post('/register', (req, res) => {
+    dBModule.storeInput(accountModule.createAccount(req.body.name, req.body.email, req.body.password));
+    res.render('gallery');
 });
 
 app.get('/gallery', (req, res) => {
