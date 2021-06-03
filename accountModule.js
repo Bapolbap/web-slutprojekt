@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const accountSchema = new mongoose.Schema({
     name: String,
@@ -16,4 +17,14 @@ exports.createAccount = (name, email, password) => {
     });
 
     return account;
+}
+
+exports.findAccount = (name, email) => {
+    const account = Account.find({name: name, email: email});
+    return account;
+}
+
+exports.findAccountPassword = (name, email) => {
+    const account = Account.find({name: name, email: email});
+    return account.password
 }

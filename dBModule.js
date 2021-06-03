@@ -9,6 +9,6 @@ db.on('open', function() {
 
 exports.storeInput = (input) => {
     input.save(() => {
-        console.log("PogChamp")
+        //console.log("PogChamp")
     });
 };
